@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كازروني للسجاد | الفخامة الملكية</title>
+<style>
+:root {
+  --red: #690b18;
+  --dark: #35050c;
+  --gold: #d9b568;
+  --cream: #fff8ed;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: var(--cream);
+  color: #30221b;
+}
+header {
+  background: var(--dark);
+  color: white;
+  padding: 18px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  border-bottom: 3px solid var(--gold);
+}
+.logo { color: var(--gold); font-size: 25px; font-weight: bold; }
+nav { display: flex; gap: 17px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; }
+nav a:hover { color: var(--gold); }
+.cart-link {
+  background: var(--gold);
+  color: var(--dark);
+  padding: 10px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.hero {
+  min-height: 440px;
+  padding: 60px 8%;
+  display: flex;
+  align-items: center;
+  color: white;
+  background:
+    linear-gradient(90deg, rgba(42,0,8,.88), rgba(75,0,12,.48)),
+    url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85")
+    center/cover;
+}
+.hero-content { max-width: 600px; }
+.hero small { color: var(--gold); font-size: 17px; }
+.hero h1 { font-size: clamp(36px, 6vw, 58px); margin: 15px 0; }
+.hero p { line-height: 2; font-size: 18px; }
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--dark);
+  border: 0;
+  border-radius: 7px;
+  padding: 13px 20px;
+  text-decoration: none;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.06); }
+section { padding: 48px 7%; }
+.heading { text-align: center; margin-bottom: 30px; }
+.heading h2 { color: var(--red); font-size: 30px; }
+.heading p { color: #76665e; line-height: 1.8; }
+.tools { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+input, select {
+  font: inherit;
+  padding: 12px;
+  border: 1px solid #ddcbb8;
+  border-radius: 7px;
+  background: white;
+}
+input { flex: 1; min-width: 170px; }
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.product {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #eee1d0;
+  box-shadow: 0 5px 18px #35050c0d;
+  transition: .25s;
+}
+.product:hover { transform: translateY(-5px); }
+.product img { width: 100%; height: 230px; object-fit: cover; display: block; }
+.product-info { padding: 17px; }
+.product h3 { color: var(--red); margin-top: 0; }
+.product p { color: #776c64; font-size: 14px; line-height: 1.8; }
+.price { color: #986b19; font-size: 21px; font-weight: bold; margin: 16px 0; }
+.product .btn { width: 100%; }
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.benefit {
+  background: white;
+  padding: 22px;
+  border-radius: 10px;
+  text-align: center;
+  border-bottom: 3px solid var(--gold);
+}
+.benefit span { font-size: 30px; }
+.benefit p { line-height: 1.8; color: #76665e; }
+#cart { background: #f5eadb; }
+#cartItems { line-height: 2.5; }
+.total { font-size: 21px; font-weight: bold; color: var(--red); }
+.cart-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.empty-btn { background: #e4d8cb; }
+footer {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+  line-height: 2;
+  border-top: 3px solid var(--gold);
+}
+footer a { color: var(--gold); }
+.note { font-size: 13px; color: #b9aaa0; }
+@media(max-width: 800px) {
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  header { justify-content: center; }
+  .benefits { grid-template-columns: 1fr; }
+}
+@media(max-width: 520px) {
+  .products { grid-template-columns: 1fr; }
+  .hero { min-height: 360px; padding: 35px 6%; }
+  section { padding: 35px 5%; }
+  nav { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">♛ كازروني للسجاد</div>
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#products">منتجاتنا</a>
+    <a href="#features">مميزاتنا</a>
+    <a href="#contact">تواصل معنا</a>
+  </nav>
+  <a class="cart-link" href="#cart">🛒 السلة (<span id="count">0</span>)</a>
+</header>
+
+<main>
+  <div class="hero" id="home">
+    <div class="hero-content">
+      <small>✦ الأناقة تبدأ من منزلك ✦</small>
+      <h1>كازروني للسجاد</h1>
+      <p>فخامة تليق ببيتك، وتفاصيل تصنع الفرق. اكتشف تشكيلة من السجاد بتصميمات أنيقة تناسب ذوقك وتضيف لمسة ملكية لكل ركن.</p>
+      <a class="btn" href="#products">اكتشف منتجاتنا ←</a>
+    </div>
+  </div>
+
+  <section id="products">
+    <div class="heading">
+      <h2>✦ تشكيلتنا المميزة ✦</h2>
+      <p>اختار السجادة المناسبة لبيتك من تشكيلتنا المتنوعة</p>
+    </div>
+
+    <div class="tools">
+      <input id="search" type="search" placeholder="ابحث عن سجادة..." oninput="renderProducts()">
+      <select id="category" onchange="renderProducts()">
+        <option value="all">جميع الأنواع</option>
+        <option value="modern">مودرن</option>
+        <option value="classic">كلاسيك</option>
+        <option value="luxury">فاخر</option>
+      </select>
+    </div>
+
+    <div class="products" id="productsList"></div>
+  </section>
+
+  <section id="features">
+    <div class="heading">
+      <h2>لماذا كازروني؟</h2>
+      <p>نهتم بتجربة شرائك من أول اختيار لحد التواصل لطلبك</p>
+    </div>
+    <div class="benefits">
+      <div class="benefit">
+        <span>👑</span>
+        <h3>أناقة مميزة</h3>
+        <p>تصميمات تناسب البيوت العصرية والكلاسيكية.</p>
+      </div>
+      <div class="benefit">
+        <span>💰</span>
+        <h3>أسعار واضحة</h3>
+        <p>شاهد السعر قبل إضافة المنتج إلى سلتك.</p>
+      </div>
+      <div class="benefit">
+        <span>🚚</span>
+        <h3>توصيل محلي</h3>
+        <p>التوصيل للمحافظة والمدن القريبة، مع تأكيد التغطية عند الطلب.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cart">
+    <div class="heading">
+      <h2>🛒 سلة المشتريات</h2>
+      <p>راجع طلبك قبل إرساله للمحل</p>
+    </div>
+    <ul id="cartItems"><li>السلة فارغة حاليًا.</li></ul>
+    <p class="total">الإجمالي: <span id="total">0</span> جنيه</p>
+    <div class="cart-actions">
+      <button class="btn" onclick="checkout()">إرسال الطلب عبر واتساب</button>
+      <button class="btn empty-btn" onclick="clearCart()">إفراغ السلة</button>
+    </div>
+    <p class="note">الأسعار المعروضة تجريبية لحين إدخال أسعار منتجات المحل الفعلية.</p>
+  </section>
+</main>
+
+<footer id="contact">
+  <h2>♛ كازروني للسجاد ♛</h2>
+  <p>بيتك يستحق الفخامة</p>
+  <p>للطلب والاستفسار: <a id="whatsappLink" href="https://wa.me/201114790517" target="_blank" rel="noopener">تواصل معنا عبر واتساب</a></p>
+  <p>التوصيل: المحافظة والمدن القريبة</p>
+  <p>© 2026 كازروني للسجاد - جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+// المنتجات والأسعار تجريبية، عدّلها حسب بضاعتك
+const products = [
+  {
+    id: 1, name: "سجادة مودرن بيج", category: "modern",
+    price: 1200,
+    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80",
+    description: "تصميم هادئ يناسب الديكورات العصرية"
+  },
+  {
+    id: 2, name: "سجادة كلاسيك فاخرة", category: "classic",
+    price: 1850,
+    image: "https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=800&q=80",
+    description: "لمسة أنيقة بتفاصيل مميزة"
+  },
+  {
+    id: 3, name: "سجادة غرفة المعيشة", category: "modern",
+    price: 1450,
+    image: "https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=800&q=80",
+    description: "تناسق جميل مع أثاث المنزل"
+  },
+  {
+    id: 4, name: "سجادة فاخرة", category: "luxury",
+    price: 2400,
+    image: "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=800&q=80",
+    description: "اختيار مميز للديكورات الراقية"
+  },
+  {
+    id: 5, name: "سجادة كلاسيك للصالون", category: "classic",
+    price: 2100,
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+    description: "أناقة تضيف طابعًا مميزًا للمكان"
+  },
+  {
+    id: 6, name: "سجادة مودرن ناعمة", category: "modern",
+    price: 990,
+    image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80",
+    description: "بساطة وجمال للاستخدام اليومي"
+  }
+];
+
+const whatsappNumber = "201114790517";
+let cart = [];
+
+function renderProducts() {
+  const query = document.getElementById("search").value.trim().toLowerCase();
+  const category = document.getElementById("category").value;
+
+  const filtered = products.filter(p =>
+    p.name.toLowerCase().includes(query) &&
+    (category === "all" || p.category === category)
+  );
+
+  document.getElementById("productsList").innerHTML = filtered.length
+    ? filtered.map(p => `
+      <article class="product">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <div class="product-info">
+          <h3>${p.name}</h3>
+          <p>${p.description}</p>
+          <div class="price">${p.price.toLocaleString("ar-EG")} جنيه</div>
+          <button class="btn" onclick="addToCart(${p.id})">أضف إلى السلة 🛒</button>
+        </div>
+      </article>
+    `).join("")
+    : "<p>لا توجد منتجات مطابقة للبحث.</p>";
+}
+
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  const existing = cart.find(p => p.id === id);
+  if (existing) existing.qty++;
+  else cart.push({ ...product, qty: 1 });
+  renderCart();
+}
+
+function renderCart() {
+  const count = cart.reduce((sum, p) => sum + p.qty, 0);
+  const total = cart.reduce((sum, p) => sum + p.price * p.qty, 0);
+
+  document.getElementById("count").textContent = count;
+  document.getElementById("total").textContent = total.toLocaleString("ar-EG");
+
+  document.getElementById("cartItems").innerHTML = cart.length
+    ? cart.map(p => `
+      <li>
+        ${p.name} × ${p.qty} — ${(p.price * p.qty).toLocaleString("ar-EG")} جنيه
+        <button onclick="removeItem(${p.id})">حذف</button>
+      </li>
+    `).join("")
+    : "<li>السلة فارغة حاليًا.</li>";
+}
+
+function removeItem(id) {
+  cart = cart.filter(p => p.id !== id);
+  renderCart();
+}
+
+function clearCart() {
+  cart = [];
+  renderCart();
+}
+
+function checkout() {
+  if (cart.length === 0) {
+    alert("أضف منتجًا إلى السلة أولًا.");
+    return;
+  }
+
+  const total = cart.reduce((sum, p) => sum + p.price * p.qty, 0);
+  const message = [
+    "السلام عليكم، أريد طلب المنتجات التالية من كازروني للسجاد:",
+    ...cart.map(p => `${p.name} × ${p.qty} = ${p.price * p.qty} جنيه`),
+    `الإجمالي: ${total} جنيه`,
+    "من فضلكم أكدوا توافر المنتجات وتكلفة التوصيل."
+  ].join("\n");
+
+  window.open(
+    "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message),
+    "_blank",
+    "noopener"
+  );
+}
+
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
